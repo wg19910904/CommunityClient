@@ -1,0 +1,31 @@
+target:JHCommunityClient  do
+platform :ios, '8.0'
+
+pod 'PayPal-iOS-SDK'
+pod 'UMengUShare' ,’~> 6.0.3'
+
+pod 'Masonry'
+pod 'MJRefresh'
+pod 'iOS-AlipaySDK'
+pod 'IQKeyboardManager'
+#pod 'UMengAnalytics-NO-IDFA'
+pod 'MJExtension'
+pod 'NJKWebViewProgress'
+
+pod 'YFPersonalTools'
+pod 'Bugly'
+
+pod 'SDWebImage', '~>3.7'
+pod 'MBProgressHUD', '~> 0.9.2'
+pod 'AMap3DMap', '~> 5.6.0'
+pod 'AMapSearch', '~> 5.2.1'
+
+pod 'libqrencode', '~> 3.4.2'
+pod 'YYModel', '~> 1.0.4'
+pod 'mp3lame-for-ios', '~> 0.1.1'
+pod 'JPush', '3.0.2'
+pod 'GooglePlaces', '~> 2.3.1'
+pod 'GooglePlacePicker', '~> 2.3.1'
+pod 'GoogleMaps', '~> 2.3.1'
+
+end

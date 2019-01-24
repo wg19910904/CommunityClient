@@ -1,0 +1,213 @@
+//
+//  PrefixHeader.pch
+//  JHCommunityClient
+//
+//  Created by jianghu2 on 16/2/22.
+//  Copyright © 2016年 JiangHu. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#endif /* PrefixHeader_pch */
+
+#ifdef __OBJC__
+#import "UIButton+BackgroundColor.h"
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "UIColor+Util.h"
+#import <MBProgressHUD.h>
+#import "UITableView_Common.h"
+#import <UIView+Extension.h>
+#import <Masonry.h>
+#import "UIButton+Extension.h"
+#import <MJExtension.h>
+#import "XHMapKitHeader.h"
+#import "UINavigationController+TabbarHidden.h"
+#import <JHHttpTool/JHHttpTool.h>
+
+#endif
+
+typedef void(^ModelBlock)(id model,NSString *msg);
+typedef void(^DataBlock)(NSArray *arr,NSString *msg);
+typedef void(^MsgBlock)(BOOL success,NSString *msg);
+
+/************以下需要配置***************/
+
+//URL
+//#define KReplace_Url @"sq.jhcms.cn"
+#define KReplace_Url @"sq.jhcms.cn"
+
+//是否在tab显示小区,YES为tabbar第二个为小区,NO为tabbar第二个为跑腿(默认为跑腿,客户购买小区功能后改为yes)
+#define HAVECOMMUNITY NO
+//国际化客户时,YES时显示区号,NO时不显示区号
+#define SHOW_COUNTRY_CODE NO
+
+#define IPADDRESS [NSString stringWithFormat:@"http://%@/api.php",KReplace_Url]
+//#define IMAGEADDRESS [NSString stringWithFormat:@"http://%@/attachs/",KReplace_Url]
+//#define HAVECOMMUNITY @"no" //yes为tabbar第二个为小区  no为tabbar第二个为跑腿(默认为跑腿,客户购买小区功能后改为yes)
+#define IMAGEADDRESS @""
+#define MALL_LINK [NSString stringWithFormat:@"http://%@/mall",KReplace_Url]
+#define MALL_ORDER_LINK [NSString stringWithFormat:@"http://%@/mall/ucenter/order/index",KReplace_Url]
+#define SHANGQUAN_LINK [NSString stringWithFormat:@"http://%@/shop/business.html",KReplace_Url]
+//UM SDK
+#define UM_KEY @"5943962e65b6d645ba0018a1"
+
+#define Bugly_Key  @"ee2826177a"
+#define UMCAnalytics_Key  @"5bfdf717f1f5560bf9000378"
+
+//高德地图
+#define GAODE_KEY @"b15238522abfcf251307439e1d92a6e4"
+//谷歌地图,非国际化客户不需要配置
+#define GMS_MapKey @"AIzaSyA3H9CYuAwohybm2NkeqHI4JpL6EWh5_SE"
+//QQ
+#define QQAPPID @"1105128929"
+#define QQAPPKEY @"D3fd7GvJ5NI0z56F"
+//微信
+#define WXAPPID @"wxbfe1ea1a6651da48"
+//极光
+#define JPUSHKEY @"ffbeebb3e5fbf5ac2fe148be"
+
+
+#define PhoneLength 11
+
+/************以上需要配置***************/
+
+#define IPADDRESS [NSString stringWithFormat:@"http://%@/api.php",KReplace_Url]
+//#define IMAGEADDRESS [NSString stringWithFormat:@"http://%@/attachs/",KReplace_Url]
+#define IMAGEADDRESS @""
+#define MALL_LINK [NSString stringWithFormat:@"http://%@/mall",KReplace_Url]
+#define MALL_ORDER_LINK [NSString stringWithFormat:@"http://%@/mall/ucenter/order/index",KReplace_Url]
+
+
+#define UserDefaults [NSUserDefaults standardUserDefaults]
+//屏幕宽高
+#define WIDTH [UIScreen mainScreen].bounds.size.width
+#define HEIGHT (isIPhoneX ? ([UIScreen mainScreen].bounds.size.height -13 ) :[UIScreen mainScreen].bounds.size.height)
+
+//系统手势高度
+#define SYSTEM_GESTURE_HEIGHT (isIPhoneX ? 13 : 0)
+
+//字体大小
+#define FONT(x) [UIFont systemFontOfSize:x]
+#define PROPORTION WIDTH/375
+//字符串长度和高度计算
+#define getSize(str,h,font)  [str boundingRectWithSize:CGSizeMake(10000, h) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]} context:nil].size
+
+#define getBoldSize(str,h,font)  [str boundingRectWithSize:CGSizeMake(10000, h) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont boldSystemFontOfSize:font]} context:nil].size
+
+#define getStrHeight(str,width,font)  [str boundingRectWithSize:CGSizeMake(width, 10000) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:font]} context:nil].size.height
+
+//坐标
+#define FRAME(x,y,w,h)  CGRectMake(x,y,w,h)
+//十六进制颜色转换
+#define HEX(x,y) [UIColor colorWithHex:x alpha:y]
+#define RGBA(x,y,z,A) [UIColor colorWithRed:x/255.0 green:y/255.0 blue:z/255.0 alpha:A]
+#define randomColor RGBA(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256), 1)
+//颜色
+#define THEME_COLOR_Alpha(x) HEX(@"fa6720",x)
+#define THEME_COLOR_WHITE_Alpha(x) HEX(@"FFFFFF",x)
+#define THEME_COLOR HEX(@"fa6720",1.0f)
+#define LINE_COLOR HEX(@"e6e6e6", 1.0f)
+#define BACK_COLOR HEX(@"fafafa",1.0f)
+#define BACKGROUND_COLOR HEX(@"f7f7f7",1.0f)
+#define SPECIAL_COLOR HEX(@"fc7400",1.0f)
+#define SPECIAL_COLOR_DOWN HEX(@"ff5500",1.0f)
+#define RED_COLOR HEX(@"fa4048",1.0f)
+#define TEXT_COLOR HEX(@"333333",1.0f)
+#define Orange_COLOR HEX(@"f96720",1.0f)
+#define NEW_THEME_COLOR HEX(@"F8F8F8",1.0f)
+
+/************************ iPhone X 适配 *************************/
+//是否是iphoneX
+#define isIPhoneX ([UIScreen mainScreen].bounds.size.width>= 375.0f && [UIScreen mainScreen].bounds.size.height >= 812.0f)
+//状态栏高度
+#define STATUS_HEIGHT (isIPhoneX ? 44 : 20)
+//导航栏高
+#define NAVI_HEIGHT (44 + STATUS_HEIGHT)
+//底部安全高度
+#define BOTTOM_SAFE_HEIGHT (isIPhoneX ? 34 : 0)
+//系统手势高度
+#define SYSTEM_GESTURE_HEIGHT (isIPhoneX ? 13 : 0)
+//tabbar高度
+#define TABBAR_HEIGHT (49 + BOTTOM_SAFE_HEIGHT)
+//有tabbar的控制的view的高度
+#define VC_TABBAR_HEIGHT (49 + BOTTOM_SAFE_HEIGHT - SYSTEM_GESTURE_HEIGHT)
+
+#define WMShopCartBottomViewH  (49 + SYSTEM_GESTURE_HEIGHT)
+
+/************************ iPhone X 适配 *************************/
+//#define THEME_C
+//图像
+#define IMAGE(x) [UIImage imageNamed:x]
+#define ImageUrl(x) [NSURL URLWithString:[NSString stringWithFormat:@"%@%@",IMAGEADDRESS,x]]
+#define DefaultImgViewImage IMAGE(@"house&maintain&paotuiorderevaluationphoto")
+#define PHAIMAGE [UIImage imageNamed:@"Default-568h"]
+#define ISPostSuccess [json[@"error"] isEqualToString:@"0"]
+#define Error_Msg json[@"message"]
+#define NOTCONNECT_STR NSLocalizedString(@"未能连接服务器,请稍后再试!", @"PrefixHeader")
+
+#define NoticeCenter [NSNotificationCenter defaultCenter]
+// 微信支付结果的通知
+#define WXSuccessPay_Notification @"WXSuccessPay_Notification"
+#define WXFailPay_Notification @"WXFailPay_Notification"
+#define Remove_Notice [[NSNotificationCenter defaultCenter] removeObserver:self];
+// 隐藏hud
+#define HIDE_HUD [MBProgressHUD hideHUDForView:self.view animated:YES];
+#define YF_SAFE_BLOCK(BlockName, ...) ({ !BlockName ? nil : BlockName(__VA_ARGS__); })
+//显示hud
+#define SHOW_HUD MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];\
+hud.removeFromSuperViewOnHide = YES;\
+hud.color = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.4];\
+hud.mode = MBProgressHUDModeIndeterminate;\
+dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{HIDE_HUD});
+
+
+#define SHOW_HUD_INVIEW(view) MBProgressHUD * hud = [MBProgressHUD showHUDAddedTo:view animated:YES];\
+hud.removeFromSuperViewOnHide = YES;\
+hud.color = [UIColor colorWithRed:0/255.0 green:0/255.0 blue:0/255.0 alpha:0.4];\
+hud.mode = MBProgressHUDModeIndeterminate;
+#define HIDE_HUD_FOR_VIEW(view) [MBProgressHUD hideHUDForView:view animated:YES];
+//必要通知
+#define KGetLocation_Notification @"GetLocation_Notification"
+#define KLogin_success @"KLoginSuccess_noti"
+#define MT NSLocalizedString(@"元", nil)
+//¥
+#define CopyString(x) [[UIPasteboard generalPasteboard] setString:x];
+#ifdef DEBUG
+#define NSLog(format, ...) printf("\n[%s] %s [第%d行] %s\n", __TIME__, __FUNCTION__, __LINE__, [[NSString stringWithFormat:format, ## __VA_ARGS__] UTF8String]);
+#else
+#define NSLog(format, ...)
+#endif
+
+
+#pragma mark ====== 代码宏定义 =======
+#define RespondsSelector(target,selector)  (target && [target respondsToSelector:selector])
+
+typedef enum{
+    WAITSHOPSURE = 0,
+    SUCCESS,
+    CANCEL,
+    COMPLETE
+}SeatNumberStatus;
+
+struct JHAllOrderFooterBtnMasRect {
+    CGFloat right_margin;   //btn 右边的约束
+    CGFloat top_margin;     //btn 顶部的约束
+    CGFloat bottom_margin;  //btn 底部的约束
+    CGFloat width_margin;   //btn 的宽
+    CGFloat btn_margin;     //btn 之间的间距
+};
+
+typedef struct JHAllOrderFooterBtnMasRect JHAllOrderFooterBtnMasRect;
+
+CG_INLINE JHAllOrderFooterBtnMasRect
+JHAllOrderFooterBtnMasRectMake(CGFloat right_margin, CGFloat top_margin, CGFloat bottom_margin, CGFloat width_margin,CGFloat btn_margin)
+{
+    JHAllOrderFooterBtnMasRect btnMasRect;
+    btnMasRect.right_margin = right_margin;
+    btnMasRect.top_margin = top_margin;
+    btnMasRect.bottom_margin = bottom_margin;
+    btnMasRect.width_margin = width_margin;
+    btnMasRect.btn_margin = btn_margin;
+    return btnMasRect;
+}
